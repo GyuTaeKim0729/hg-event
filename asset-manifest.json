@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/hg-wedding/static/css/main.f855e6bc.css",
+    "main.js": "/hg-wedding/static/js/main.0257a8e4.js",
+    "static/js/488.a33a091d.chunk.js": "/hg-wedding/static/js/488.a33a091d.chunk.js",
+    "static/media/logo.svg": "/hg-wedding/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/hg-wedding/index.html",
+    "main.f855e6bc.css.map": "/hg-wedding/static/css/main.f855e6bc.css.map",
+    "main.0257a8e4.js.map": "/hg-wedding/static/js/main.0257a8e4.js.map",
+    "488.a33a091d.chunk.js.map": "/hg-wedding/static/js/488.a33a091d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.0257a8e4.js"
+  ]
+}
