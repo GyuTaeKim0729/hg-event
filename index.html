@@ -1,1 +1,163 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>26.3.21 Countdown</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            font-weight: bold;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .line,
+        #comingSoon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #words {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            /* 💡 수직 방향 정렬 */
+            align-items: flex-start;   /* 🔥 왼쪽 정렬 */
+            /* 중앙 정렬 */
+            gap: 1rem;
+            /* 단어 사이 간격 */
+            z-index: 5;
+        }
+
+        /* 공통 */
+        .line {
+            display: flex;
+            gap: 1vw;
+            font-size: 9vw;
+            transition: opacity 2s ease;
+            z-index: 1;
+        }
+
+        .word {
+            font-size: 6vw;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            margin: 0 0.5rem;
+            display: inline-block;
+        }
+
+        /* 기존 그대로 유지 */
+        .char {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 1ch;
+            text-align: center;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+        }
+
+        #comingSoon {
+            font-size: 7vw;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 날짜 라인 -->
+    <div class="line" id="line">
+        <div class="char" id="c3_1">2</div>
+        <div class="char" id="c3_2">6</div>
+        <div class="char" id="c3_3">.</div>
+        <div class="char" id="c0">3</div>
+        <div class="char" id="c3_4">.</div>
+        <div class="char" id="c1">2</div>
+        <div class="char" id="c2">1</div>
+    </div>
+
+    <!-- 메시지 단어들 -->
+    <div id="words">
+        <div class="word" id="w0">무언가</div>
+        <div class="word" id="w1">중요한</div>
+        <div class="word" id="w2">날이</div>
+        <div class="word" id="w3">다가옵니다.</div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="comingSoon" id="comingSoon">COMING SOON</div>
+
+    <script>
+        const chars = ['c0', 'c1', 'c2'].map(id => document.getElementById(id));
+        const leftCharIds = ['c3_1', 'c3_2', 'c3_3', 'c3_4'];
+        const leftChars = leftCharIds.map(id => document.getElementById(id));
+        const words = ['w0', 'w1', 'w2', 'w3'].map(id => document.getElementById(id));
+        const line = document.getElementById('line');
+        const comingSoon = document.getElementById('comingSoon');
+
+        // 숫자 순차 등장
+        chars.forEach((char, i) => {
+            setTimeout(() => {
+                char.classList.add('show');
+            }, i * 800);
+        });
+
+        // 왼쪽 숫자들 동시에
+        setTimeout(() => {
+            leftChars.forEach(el => el.classList.add('show'));
+        }, 3 * 800 + 500);
+
+        // 날짜 전체 페이드아웃
+        setTimeout(() => {
+            line.classList.add('fade-out');
+        }, 7 * 800);
+
+        // 단어들 순차 등장
+        words.forEach((word, i) => {
+            setTimeout(() => {
+                word.classList.add('show');
+            }, 7 * 800 + 1000 + i * 1000);
+        });
+
+        // 단어 전체 페이드아웃
+        setTimeout(() => {
+            words.forEach(word => word.classList.add('fade-out'));
+        }, 7 * 800 + 1000 + words.length * 1000 + 1000);
+
+        // COMING SOON
+        setTimeout(() => {
+            comingSoon.style.opacity = "1";
+        }, 7 * 800 + 1000 + words.length * 1000 + 2000);
+    </script>
+
+</body>
+
+</html>
