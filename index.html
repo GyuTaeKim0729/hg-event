@@ -139,24 +139,24 @@
         // 날짜 전체 페이드아웃
         setTimeout(() => {
             line.classList.add('fade-out');
-        }, 7 * 800);
+        }, 5 * 800);
 
         // 단어들 순차 등장
         words.forEach((word, i) => {
             setTimeout(() => {
                 word.classList.add('show');
-            }, 7 * 800 + 1000 + i * 1000);
+            }, 5 * 800 + 1000 + i * 1000);
         });
 
         // 단어 전체 페이드아웃
         setTimeout(() => {
             words.forEach(word => word.classList.add('fade-out'));
-        }, 7 * 800 + 1000 + words.length * 1000 + 1000);
+        }, 5 * 800 + 1000 + words.length * 1000 + 1000);
 
         // COMING SOON
         setTimeout(() => {
             comingSoon.style.opacity = "1";
-        }, 7 * 800 + 1000 + words.length * 1000 + 2000);
+        }, 5 * 800 + 1000 + words.length * 1000 + 2000);
     </script>
 
 </body>
